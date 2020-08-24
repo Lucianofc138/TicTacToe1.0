@@ -102,7 +102,7 @@ public class Main{
         int row;
         int col;
 
-        for(row=0; row<3;row++){
+        for(row=0; row<3;row++){ //horizontal line
             for(col=0; col<3;col++){
                 if(board[row][col]!=mark)
                     break;
@@ -110,8 +110,7 @@ public class Main{
                     return true;
             }    
         }
-
-        for(col=0; col<3;col++){
+        for(col=0; col<3;col++){ //vertical line
             for(row=0; row<3;row++){
                 if(board[row][col]!=mark)
                     break;
@@ -119,32 +118,20 @@ public class Main{
                     return true;
             }    
         }
-
-
-        for(row=0; row<3; row++){
-            if (board[row][row]!=mark)
+        for(row=0; row<3; row++){ //primary diagonal line
+            col = row;
+            if (board[row][col]!=mark)
                 break;
             if (row==2)
                 return true;
         }
-        for(row=0; row<3; row++){
-            if (board[row][2-row]!=mark)
+        for(row=0; row<3; row++){ //secondary diagonal line
+            col = 2 - row;
+            if (board[row][col]!=mark)
                 break;
             if (row==2)
                 return true;
         }
-
-        return false;
-    } 
-    public static boolean checkTie(final char[][] board){ //Unused
-        int count = 0;
-        for(int row=0; row<3; row++){
-            for(int col=0; col<3; col++){
-                if (board[row][col]!=EMPTY_SQUARE)
-                    count++;
-            }
-        }
-        if(count==9) return true;
-        else return false;
+        return false; 
     }
 }
